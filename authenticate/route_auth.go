@@ -2,7 +2,7 @@ package authenticate
 
 import "net/http"
 
-func authenticate(w http.ResponseWriter, r *http.Request) {
+func Authenticate(w http.ResponseWriter, r *http.Request) {
 	r.ParseFiles
 	user, _ := data.UserByEmail(r.PostFormValue("email"))
 	if user.Password == data.Encrypt(r.PostFromValue("password")) {
@@ -17,3 +17,5 @@ func authenticate(w http.ResponseWriter, r *http.Request) {
 		http.Redirect(w, r, "/login", 302)
 	}
 }
+
+// 31.5 - 32 str
